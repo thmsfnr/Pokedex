@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pokédex</title>
+    <!-- Import jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Add a favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+    <!-- Import Styles Components-->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+    <!-- Import axios (used to retrieve pokemon) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Navigation bar with a logo and a search bar (by id and name(complete or part)) -->
+      <div class="nav-bar">
+        <img class = "logo" v-on:click="back" src="./assets/images/logo.png">
+        <search-pokemon @search-pokemon="searchPokemon" ></search-pokemon>
+      </div>
+      <!-- Dynamic content of the page -->
+      <div>
+        <button></button>
+        <!-- If a search is done but there is no match-->
+        <div class="error" v-show="error" style="margin-top: 90px;">
+          <h3 class="white-text">Pas de correspondance</h3>
+        </div>
+        <ul class="content">
+          <!-- If no pokemon is selected -->
+          <display-list-pokemon v-if="notSelected" :list="listPokemon" @pokemon-selected="selectPokemon"></display-list-pokemon>
+          <!-- If a pokemon has been selected -->
+          <display-one-pokemon v-if="!notSelected" :stat="stat" :type="type" :talent="talent" :pokemon="pokemonSelected" :charact="characteristicsPokemon" @back-to-list="back"></display-one-pokemon>
+        </ul>
+      </div>
+    </div>
+    <!-- Import App -->
+    <script src="./main.js"></script>
+    <!-- Import Components -->
+    <script src="./components/SearchPokemon.js"></script>
+    <script src="./components/DisplayListPokemon.js"></script>
+    <script src="./components/DisplayOnePokemon.js"></script>
+    <!-- Mount App -->
+    <script>
+      app.mount('#app')
+    </script>
+  </body>
+</html>
+
