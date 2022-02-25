@@ -13,16 +13,8 @@ const app = Vue.createApp({
         notSelected: true
       }
     },
-    /* Retrieves pokemon data */
     created: function() {
-      this.hello()
-    },
-    /* Complete the pokemon data */
-    mounted: function() {
-      document.onreadystatechange = () => {
-        if (document.readyState == "complete") {
-          //this.completePokeData()
-        }}
+      this.fetchPokemons()
     },
     methods: {
         /* Gets the different characteristics and abilities of pokemon */
@@ -126,7 +118,8 @@ const app = Vue.createApp({
         imageUrl(id) {
           return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + id + '.svg'
         },
-        async hello() {
+        /* Retrieves pokemon data */
+        async fetchPokemons() {
           await axios.get(this.url).then(response => (this.listPokemon = response.data.results))
           this.completePokeData()
         }
