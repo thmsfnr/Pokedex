@@ -124,7 +124,7 @@ body {
   justify-content: space-around;
 }
 
-.affichage:hover {
+.list-pokemon:hover {
   transform: translateX(10px) translateY(-10px);
   background-color: rgb(207, 207, 187);
 }
@@ -148,11 +148,11 @@ body {
   box-shadow: 0 2px #666;
 }
 
-.button:hover {
+.search-button:hover {
   background-color: #bdbcbc;
 }
 
-.button:active {
+.search-button:active {
   transform: translateY(2px);
   box-shadow: 0 0.2px #666;
 }
